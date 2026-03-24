@@ -20,14 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let isDarkMode = UserDefaults.standard.bool(forKey: "themeOfApp")
         window?.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+        //window?.overrideUserInterfaceStyle = .dark
+
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
         
-//        if !isLoggedIn{
-//            window?.rootViewController = UINavigationController(rootViewController: OnboardingPageController())
-//           
-//        }else{
-//            window?.rootViewController = TabBarViewController()
-//        }
+        if !isLoggedIn{
+            window?.rootViewController = UINavigationController(rootViewController: OnboardingPageController())
+           
+        }else{
+            window?.rootViewController = TabBarViewController()
+        }
         window?.rootViewController = TabBarViewController()
 
         window?.makeKeyAndVisible()

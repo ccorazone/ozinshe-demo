@@ -10,7 +10,7 @@ import SnapKit
 class OnboardingVC: UIViewController {
     
     private lazy var titleLabel = UILabel.createLabel(text: "ÖZINŞE-ге қош келдің!" ,font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary, textAlignment: .center)
-    private lazy var subtitleLabel = UILabel.createLabel(font: UIFont(name: Fonts.medium.rawValue, size: 14)!, color: Colors.Text.secondary, textAlignment: .center)
+    private lazy var subtitleLabel = UILabel.createLabel(font: UIFont(name: Fonts.medium.rawValue, size: 14)!, color: .appOnboardingSubtitle, textAlignment: .center)
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
