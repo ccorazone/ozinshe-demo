@@ -1,0 +1,9 @@
+# Секретные файлы
+ozinshe demo/Model/API.swift
+
+# Системные файлы Mac и Xcode
+.DS_Store
+build/
+*.xcuserdata
+*.xcworkspace
+!default.xcworkspace
