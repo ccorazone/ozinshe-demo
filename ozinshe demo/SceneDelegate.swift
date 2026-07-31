@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }else{
             window?.rootViewController = TabBarViewController()
         }
-        window?.rootViewController = TabBarViewController()
+        //window?.rootViewController = TabBarViewController()
 
         window?.makeKeyAndVisible()
 

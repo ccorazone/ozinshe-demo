@@ -6,14 +6,15 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class EditProfileViewController: UIViewController {
     var viewModel: UserProfileViewModel!
     
-    lazy var nameField = CustomProfileInfoView(title: "Сіздің атыңыз", value: "Мади")
-    lazy var emailField = CustomProfileInfoView(title: "Email", value: "madi.temeshev@mail.ru", isEnabled: false)
-    lazy var phoneField = CustomProfileInfoView(title: "Телефон", value: "+7 708 639-53-01")
-    lazy var birthdayField = CustomProfileInfoView(title: "Туылған күні", value: "19 Қыркүйек 2004")
+    lazy var nameField = CustomProfileInfoView(title: "your_name".localized(), value: "Мади")
+    lazy var emailField = CustomProfileInfoView(title: "email".localized(), value: "madi.temeshev@mail.ru", isEnabled: false)
+    lazy var phoneField = CustomProfileInfoView(title: "phone_title".localized(), value: "+7 708 639-53-01")
+    lazy var birthdayField = CustomProfileInfoView(title: "date_of_birth_title".localized(), value: "19 Қыркүйек 2004")
     
 //    lazy var navigationTitle: UILabel = {
 //       let label = UILabel()
@@ -22,11 +23,11 @@ class EditProfileViewController: UIViewController {
 //        label.textColor = Colors.Text.primary
 //        return label
 //    }()
-    lazy var navigationTitle = UILabel.createLabel(text: "Жеке деректер", font: .systemFont(ofSize: 16, weight: .bold), color: Colors.Text.primary, textAlignment: .center)
+    lazy var navigationTitle = UILabel.createLabel(text: "person_info".localized(), font: .systemFont(ofSize: 16, weight: .bold), color: Colors.Text.primary, textAlignment: .center)
     
     
     lazy var saveButton: MainPurpleButton = {
-        let button = MainPurpleButton(title: "Өзгерістерді сақтау")
+        let button = MainPurpleButton(title: "save_changes_button".localized())
         button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -52,13 +53,22 @@ class EditProfileViewController: UIViewController {
     }()
     
     
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //view.backgroundColor = .white
         view.backgroundColor = .primaryBackground
         
-        navigationItem.title = "Жеке деректер"
+        navigationItem.title = "person_info".localized()
         setConstraints()
         navigationItem.titleView = navigationTitle
         updateUI()

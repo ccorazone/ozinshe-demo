@@ -84,6 +84,9 @@ class SettingsButton: UIButton {
         
         
     }
+    func setTitle(_ text: String){
+        buttonTitleLabel.text = text
+    }
     
     func setSubtitle(text: String?){
         buttonSubtitleLabel.text = text
@@ -91,13 +94,17 @@ class SettingsButton: UIButton {
     
     @objc private func switchToggle(_ sender: UISwitch){
         print(sender.isOn)
-        UserDefaults.standard.set(sender.isOn, forKey: "ThemeOfApp")
+        UserDefaults.standard.set(sender.isOn, forKey: "themeOfApp")
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first{
             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
                 window.overrideUserInterfaceStyle = sender.isOn ? .dark : .light
             }, completion: nil)
         }
+    }
+    
+    func setSwitchState(isOn: Bool){
+        switchView.setOn(isOn, animated: false)
     }
     
     

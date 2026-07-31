@@ -1,0 +1,74 @@
+/* 
+  Localizable.strings
+  ozinshe demo
+
+  Created by Мади Темешев on 29.03.2026.
+  
+*/
+
+// MARK: Profile text
+"profile_title" = "Профиль";
+"my_profile" = "Мой профиль";
+"person_info" = "Персональные данные";
+"change_password" = "Сменить пароль";
+"language" = "Язык";
+"view_mode" = "Темный режим";
+
+// MARK: PERSON INFO TEXT
+"your_name" = "Ваше имя";
+"email" = "Email";
+"phone_title" = "Телефон";
+"date_of_birth_title" = "Дата рождения";
+"kazakh_language_title" = "Қазақша";
+"english_language_title" = "English";
+"russian_language_title" = "Русский";
+"exit_title" = "Выход";
+"exit_subtitle" = "Вы действительно хотите выйти из аккаунта?";
+
+// MARK: Change password
+"password_title" = "Пароль";
+"password_repeat_title" = "Повторите пароль";
+"password_placeholder" = "Ваш пароль";
+
+// MARK: Favorite VC
+"favorite_vc_title" = "Список";
+"watch_title" = "Смотреть";
+
+// MARK: Onboarding vc
+"onboarding_title" = "Добро пожаловать в ÖZINŞE!";
+"onboarding_FP_subtitle" = "Фильмы, телесериалы, ситкомы, анимационные проекты, телепередачи и реалити-шоу, аниме и многое другое";
+"onboarding_SP_subtitle" = "Смотри с любого устройства\nСмотри любимый фильм на телефоне, планшете или ноутбуке без дополнительной платы";
+"onboarding_TP_subtitle" = "Зарегистрироваться легко. Зарегистрируйся сейчас и получи доступ к любимым фильмам";
+
+// MARK: Authorization VC
+"greeting_title" = "Привет";
+"join_subtitle" = "Войдите в аккаунт";
+"your_email_placeholder" = "Ваш email";
+
+// MARK: Registration VC
+"register_subtitle" = "Заполните данные";
+
+//MARK: Search VC
+"search_title" = "Поиск";
+"category_title" = "Категории";
+"search_results" = "Результат поиска";
+
+
+// MARK: Buttons
+"save_changes_button" = "Сохранить изменения";
+"exit_yes_button" = "Да, выйти";
+"exit_no_button" = "Нет";
+"skip_button" = "Пропустить";
+"next_button" = "Далее";
+"forgot_password_button" = "Забыли пароль?";
+"join_button" = "Войти";
+"don't_have_acc" = "У вас нет аккаунта? ";
+"register_button_title" = "Регистрация";
+"you_have_acc" = "У вас есть аккаунт? ";
+
+
+"continue_watch" = "Продолжить просмотр";
+"all_title" = "Все";
+"choose_genre" = "Выберите жанр";
+"for_age" = "По возрасту";
+

@@ -3,6 +3,16 @@
     {
       "filename" : "HomeSelected.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Home-Filled.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

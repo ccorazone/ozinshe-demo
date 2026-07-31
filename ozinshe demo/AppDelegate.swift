@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Localize_Swift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            UserDefaults.standard.synchronize()
 //            print("UserDefaults полностью очищены")
 //        }
+        let currentLanguage = Localize.currentLanguage()
+        print("Language - \(currentLanguage)")
         return true
     }
 

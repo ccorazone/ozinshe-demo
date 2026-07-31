@@ -6,12 +6,13 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 class ProfileViewController: UIViewController {
    
     let viewModel = UserProfileViewModel()
     
    
-    lazy var navigationTitle = UILabel.createLabel(text: "Профиль",font: UIFont(name: Fonts.bold.rawValue, size: 16)!, color: Colors.Text.primary,textAlignment: .center)
+    lazy var navigationTitle = UILabel.createLabel(text: "profile_title".localized(),font: UIFont(name: Fonts.bold.rawValue, size: 16)!, color: Colors.Text.primary,textAlignment: .center, numberOfLines: 1)
     
     
     lazy var avatarImageView: UIImageView = {
@@ -24,7 +25,7 @@ class ProfileViewController: UIViewController {
     }()
     
     
-    lazy var titleLabel =   UILabel.createLabel(text: "Менің профилім", font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary, textAlignment: .center)
+    lazy var titleLabel =   UILabel.createLabel(text: "my_profile".localized(), font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary, textAlignment: .center)
     lazy var emailLabel =  UILabel.createLabel(text: "madi", font: UIFont(name: Fonts.regular.rawValue, size: 14)!, color: Colors.Text.secondary, textAlignment: .center)
     
     lazy var profileSubView: UIView = {
@@ -34,25 +35,25 @@ class ProfileViewController: UIViewController {
     }()
     
     lazy var infoButton: SettingsButton = {
-        let button = SettingsButton(title: "Жеке деректер", subtitle: "Өңдеу", showChevron: true)
+        let button = SettingsButton(title: "person_info".localized(), subtitle: "Өңдеу", showChevron: true)
         button.addTarget(self, action: #selector(didTapInfoButton), for: .touchUpInside)
         return button
     }()
     
     lazy var passwordButton: SettingsButton = {
-        let button = SettingsButton(title: "Құпия сөзді өзгерту", subtitle: nil, showChevron: true)
+        let button = SettingsButton(title: "change_password".localized(), subtitle: nil, showChevron: true)
         button.addTarget(self, action: #selector(didTapPasswordButton), for: .touchUpInside)
         return button
     }()
     
     lazy var languageButton: SettingsButton = {
-        let button = SettingsButton(title: "Тіл", subtitle: "Қазақша", showChevron: true)
+        let button = SettingsButton(title: "language".localized(), subtitle: "Қазақша", showChevron: true)
         button.addTarget(self, action: #selector(didTapLanguageButton), for: .touchUpInside)
         return button
     }()
     
     lazy var lightmodeButton: SettingsButton = {
-        let button = SettingsButton(title: "Қараңғы режим", subtitle: nil, isSwitch: true)
+        let button = SettingsButton(title: "view_mode".localized(), subtitle: nil, isSwitch: true)
         button.addTarget(self, action: #selector(didTapLightmodeButton), for: .valueChanged)
         return button
     }()
@@ -107,7 +108,7 @@ class ProfileViewController: UIViewController {
     }()
     
     var languages: [Languages] = [Languages(name: "English", code: "en", isSelected: false),
-                                  Languages(name: "Қазақша", code: "kz", isSelected: true),
+                                  Languages(name: "Қазақша", code: "kk", isSelected: true),
                                   Languages(name: "Русский", code: "ru", isSelected: false)
     ]
     
@@ -129,7 +130,8 @@ class ProfileViewController: UIViewController {
         navigationItem.titleView = navigationTitle
         bindingVM()
         viewModel.fetchProfile()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeLanguage), name: NSNotification.Name(LCLLanguageChangeNotification), object: nil)
+        settingLightmodeButton()
         
         
         
@@ -205,18 +207,19 @@ class ProfileViewController: UIViewController {
             make.height.equalTo(172)
         }
         
-        let vc = BottomSheetViewController(title: "Тіл", mainContent: tableView, padding: 12)
+        let vc = BottomSheetViewController(title: "language".localized(), mainContent: tableView, padding: 12)
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
     }
-    @objc func didTapLightmodeButton(){
-        print("tapped 4")
+    private func settingLightmodeButton(){
+        let isDark = UserDefaults.standard.bool(forKey: "themeOfApp")
+        lightmodeButton.setSwitchState(isOn: isDark)
     }
     
     @objc func didLogout(){
         print("tapped 5")
         let exitView = LogoutSheetView()
-        let vc = BottomSheetViewController(title: "Шығу", mainContent: exitView, padding: 8)
+        let vc = BottomSheetViewController(title: "exit_title".localized(), mainContent: exitView, padding: 8)
         
         exitView.onCancelTapped = {[weak self] in
             self?.dismiss(animated: true)
@@ -237,7 +240,8 @@ class ProfileViewController: UIViewController {
     }
     
     private func setLanguages(){
-        let currentLanguage = viewModel.userProfile?.language ?? "kz"
+        //let currentLanguage = viewModel.userProfile?.language ?? "kz"
+        let currentLanguage = Localize.currentLanguage()
         for i in 0..<languages.count{
             languages[i].isSelected = (currentLanguage == languages[i].code)
             
@@ -245,6 +249,21 @@ class ProfileViewController: UIViewController {
                 languageButton.setSubtitle(text: languages[i].name)
             }
         }
+    }
+    
+    
+    @objc func didChangeLanguage(){
+        navigationTitle.text = "profile_title".localized()
+        titleLabel.text = "my_profile".localized()
+        
+        infoButton.setTitle("person_info".localized())
+        passwordButton.setTitle("change_password".localized())
+        languageButton.setTitle("language".localized())
+        lightmodeButton.setTitle("view_mode".localized())
+    }
+    
+    @objc func didTapLightmodeButton(){
+        print("tapped switch")
     }
     
     
@@ -273,6 +292,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         }
         languages[indexPath.row].isSelected = true
         let selectedLanguage = languages[indexPath.row]
+        
+        Localize.setCurrentLanguage(selectedLanguage.code)
         viewModel.userProfile?.language = selectedLanguage.code
         languageButton.setSubtitle(text: languages[indexPath.row].name)
         //UserDefaults.standard.set(languages[indexPath.row].name, forKey: "language")

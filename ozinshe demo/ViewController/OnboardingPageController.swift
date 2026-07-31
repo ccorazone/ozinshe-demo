@@ -7,17 +7,14 @@
 import UIKit
 import SnapKit
 import AdvancedPageControl
-
+import Localize_Swift
 class OnboardingPageController: UIPageViewController{
    
     
     private let models: [OnboardingModel] = [
-        OnboardingModel(title: "ÖZINŞE-ге қош келдің!", subtitle: "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары", image: "onboarding1", isLast: false),
-        OnboardingModel(title: "ÖZINŞE-ге қош келдің!", subtitle:"""
-                        Кез келген құрылғыдан қара 
-                        Сүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара
-                        """, image: "onboarding2", isLast: false),
-        OnboardingModel(title: "ÖZINŞE-ге қош келдің!", subtitle: "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз", image: "onboarding3", isLast: true)
+        OnboardingModel(title: "onboarding_title".localized(), subtitle: "onboarding_FP_subtitle".localized(), image: "onboarding1", isLast: false),
+        OnboardingModel(title: "onboarding_title".localized(), subtitle: "onboarding_SP_subtitle".localized(), image: "onboarding2", isLast: false),
+        OnboardingModel(title: "onboarding_title".localized(), subtitle: "onboarding_TP_subtitle".localized(), image: "onboarding3", isLast: true)
         
     ]
     

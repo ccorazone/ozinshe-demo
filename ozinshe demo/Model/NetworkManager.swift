@@ -173,6 +173,98 @@ class NetworkManager{
             }
     }
     
+    func fetchCategories(completion: @escaping ([CategoryResponse]?) -> ()){
+        let url = API.baseURL + API.Core.getAllCategories
+        let headers = getHeader()
+        AF.request(url, method: .get, headers: headers)
+            .validate()
+            .responseDecodable(of: [CategoryResponse].self){response in
+                if let error = response.error{
+                    print(error)
+                    completion(nil)
+                }
+                if let categories = response.value{
+                    completion(categories)
+                    print("categories fetched")
+                }
+            }
+    }
+    func fetchMoviesByCategory(categoryId: Int, completion: @escaping ([Movie]?,String?) -> ()){
+        let url = API.baseURL + API.Core.getMoviesByCategory
+        let headers = getHeader()
+        
+        
+        let parametrs: [String: Any] = ["categoryId": categoryId]
+        AF.request(url, method: .get, parameters: parametrs,encoding: URLEncoding.default, headers: headers)
+            .validate()
+            .responseDecodable(of: MovieResponse.self){respose in
+            
+                switch respose.result{
+                case .success(let movies):
+                    completion(movies.content, nil)
+                case .failure(let error):
+                    print(error)
+                    completion(nil,"Failed to fetch movies")
+                }
+        }
+    }
+    
+    func fetchMoviesByQuery(query: String, completion: @escaping ([Movie]?,String? ) -> ()){
+        let url = API.baseURL + API.Core.getMoviesByQuery
+        let header = getHeader()
+        let parametrs: [String: Any] = ["search": query]
+        
+        AF.request(url, method: .get, parameters: parametrs, encoding: URLEncoding.default, headers: header )
+            .validate()
+            .responseDecodable(of: [Movie].self){response in
+                switch response.result{
+                case .success(let movies):
+                    completion(movies, nil)
+                    
+                case .failure(let error):
+                    completion(nil, error.localizedDescription)
+                }
+            }
+    }
+    
+    
+    func fetchAllBanners() async throws -> [BannerMovie]{
+        try await request(path: API.Core.getBannerMovies)
+    }
+    
+    func fetchWatchHistory() async throws -> [Movie]{
+        try await request(path: API.Core.getWatchHistory)
+    }
+    
+    func fetchAllMoviesWithCategory() async throws -> [AllMoviesByCategory]{
+        try await request(path: API.Core.getAllMoviesForMainPage)
+    }
+    func fetchAllGenres() async throws -> [Genre]{
+        try await request(path: API.Core.getGenres)
+    }
+    func fetchAgeCategories() async throws -> [AgeCategories]{
+        try await request(path: API.Core.getAgeCategories)
+    }
+    
+    
+    
+    
+    
+    
+    
+    private func request<T: Decodable>(path: String, method: HTTPMethod = .get) async throws -> T{
+        let url = API.baseURL + path
+        let headers = getHeader()
+        let responseMovie = try await AF.request(url, method: method, headers: headers)
+            .validate()
+            .serializingDecodable(T.self)
+            .value
+        return responseMovie
+        
+    }
+    
+    
+    
     private func getHeader() -> HTTPHeaders{
         guard let token = self.token else{
             return []

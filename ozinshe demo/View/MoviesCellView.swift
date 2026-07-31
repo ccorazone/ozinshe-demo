@@ -7,8 +7,10 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import Localize_Swift
 
 class MoviesCellView: UITableViewCell {
+    static let id = "MoviesCell"
     
     lazy var posterImageView: UIImageView = createImageView(image: "Image")
     lazy var playImageView: UIImageView = createImageView(image: "Play")
@@ -19,7 +21,7 @@ class MoviesCellView: UITableViewCell {
                                               font: UIFont(name: Fonts.regular.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12, weight: .regular),
                                               color: Colors.Text.secondary, numberOfLines: 1)
     
-    lazy var buttonTitle = UILabel.createLabel(text: "Қарау",
+    lazy var buttonTitle = UILabel.createLabel(text: "watch_title".localized(),
                                             font: UIFont(name: Fonts.bold.rawValue, size: 12) ?? UIFont.systemFont(ofSize: 12, weight: .regular),
                                                  color: Colors.Text.purpleFont)
     
@@ -43,9 +45,7 @@ class MoviesCellView: UITableViewCell {
         buttonView.addSubview(playImageView)
         buttonView.addSubview(buttonTitle)
         contentView.addSubview(bottomView)
-        if let token = UserDefaults.standard.string(forKey: "userToken") { // или как ты его хранишь
-            SDWebImageDownloader.shared.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
+       
         setConstraints()
 
        
@@ -82,7 +82,7 @@ class MoviesCellView: UITableViewCell {
         
         posterImageView.snp.makeConstraints{make in
             make.top.equalToSuperview().offset(24)
-            make.bottom.equalTo(bottomView.snp.top).offset(-24)
+            //make.bottom.equalTo(bottomView.snp.top).offset(-24)
             make.left.equalTo(contentView).offset(24)
             make.width.equalTo(71.02)
             make.height.equalTo(104)
@@ -102,11 +102,15 @@ class MoviesCellView: UITableViewCell {
         buttonView.snp.makeConstraints{make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(24)
             make.left.equalTo(posterImageView.snp.right).offset(17)
-            make.width.equalTo(80)
+            //make.width.equalTo(80)
             make.height.equalTo(26)
+            make.bottom.equalTo(bottomView.snp.top).offset(-32)
+
         }
         playImageView.snp.makeConstraints{make in
+            make.size.equalTo(16)
             make.top.equalTo(buttonView).offset(5)
+            
             make.left.equalTo(buttonView).offset(12)
             make.right.equalTo(buttonTitle.snp.left).offset(-4)
             make.bottom.equalTo(buttonView).inset(5)
@@ -129,6 +133,7 @@ class MoviesCellView: UITableViewCell {
     
     
     func setData(movie: Movie) {
+        buttonTitle.text = "watch_title".localized()
         titleLabel.text = movie.name
         var titleComponents: [String] = []
         if let year = movie.year{
@@ -138,7 +143,7 @@ class MoviesCellView: UITableViewCell {
             titleComponents.append("-")
 
         }
-        let categories = movie.categories.map({$0.name})
+        let categories = (movie.categories ?? []).map { $0.name }
         titleComponents.append(contentsOf: categories)
         subtitleLabel.text = titleComponents.joined(separator: " • ")
         

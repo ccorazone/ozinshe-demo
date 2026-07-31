@@ -8,23 +8,24 @@
 import UIKit
 import SnapKit
 import SVProgressHUD
+import Localize_Swift
 
 class AuthorizationViewController: UIViewController {
     let viewModel = LoginViewModel()
     
-    let titleLabel = UILabel.createLabel(text: "Сәлем", font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary)
-    let subTitleLabel = UILabel.createLabel(text: "Аккаунтқа кіріңіз", font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
+    let titleLabel = UILabel.createLabel(text: "greeting_title".localized(), font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary)
+    let subTitleLabel = UILabel.createLabel(text: "join_subtitle".localized(), font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
     
-    let loginTextField = AuthTextFieldView(title: "Email")
-    let passwordTextField = CustomChangePasswordView(title: "Құпия сөз")
+    let loginTextField = AuthTextFieldView(title: "email".localized())
+    let passwordTextField = CustomChangePasswordView(title: "password_title".localized())
     lazy var loginButton: UIButton = {
-        let btn = MainPurpleButton(title: "Кіру")
+        let btn = MainPurpleButton(title: "join_button".localized())
         btn.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return btn
     }()
     lazy var forgotPasswordButton: UIButton = {
         var config = UIButton.Configuration.plain()
-        config.title = "Құпия сөзді ұмыттыңыз ба?"
+        config.title = "forgot_password_button".localized()
         config.baseForegroundColor = Colors.Text.lightPurpleText
         var attributeString = AttributedString(config.title ?? "")
         attributeString.font = UIFont(name: Fonts.semibold.rawValue, size: 14)
@@ -40,10 +41,10 @@ class AuthorizationViewController: UIViewController {
         var container = AttributeContainer()
         container.foregroundColor = Colors.Text.secondary
         container.font = UIFont(name: Fonts.semibold.rawValue, size: 14)
-        var atributedTitle = AttributedString("Аккаунтыныз жоқ па? ", attributes: container)
+        var atributedTitle = AttributedString("don't_have_acc".localized(), attributes: container)
         var purpleContainer = container
         purpleContainer.foregroundColor = Colors.Text.lightPurpleText
-        var purpleTitle = AttributedString("Тіркелу", attributes: purpleContainer)
+        var purpleTitle = AttributedString("register_button_title".localized(), attributes: purpleContainer)
         atributedTitle.append(purpleTitle)
         config.attributedTitle = atributedTitle
         let btn = UIButton(configuration: config)

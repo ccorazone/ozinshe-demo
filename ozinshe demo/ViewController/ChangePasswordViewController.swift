@@ -6,13 +6,14 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class ChangePasswordViewController: UIViewController {
     let viewModel = ChangePasswordViewModel()
-    lazy var firstPasswordView = CustomChangePasswordView(title: "Password")
-    lazy var secondPasswordView = CustomChangePasswordView(title: "Құпия сөзді қайталаңыз")
+    lazy var firstPasswordView = CustomChangePasswordView(title: "password_title".localized())
+    lazy var secondPasswordView = CustomChangePasswordView(title: "password_repeat_title".localized())
     lazy var changePasswordButton = {
-        let btn = MainPurpleButton(title: "Өзгерістерді сақтау")
+        let btn = MainPurpleButton(title: "save_changes_button".localized())
         let action = UIAction{[weak self] _ in
             self?.saveNewPassword()
         }
@@ -28,7 +29,14 @@ class ChangePasswordViewController: UIViewController {
         return stack
     }()
     
+    init(){
+        super.init(nibName: nil, bundle: nil)
+        self.hidesBottomBarWhenPushed = true
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         

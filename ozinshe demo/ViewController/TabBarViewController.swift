@@ -16,6 +16,11 @@ final class TabBarViewController: UITabBarController {
 //            print("Family: \(family) Font names - \(name)")
 //        }
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupTabIcons()
+    }
+   
     
     func setupTabs(){
         let homeVC = HomeViewController()
@@ -35,6 +40,17 @@ final class TabBarViewController: UITabBarController {
         
         setViewControllers( [homeNav, searchNav, favoriteNav, profileNav], animated: true)
 
+    }
+    private func setupTabIcons(){
+        let homeSelectedImage = UIImage(named: "HomeSelected")?.withRenderingMode(.alwaysOriginal)
+        let searchSelectedImage = UIImage(named: "SearchSelected")?.withRenderingMode(.alwaysOriginal)
+        let favoriteSelectedImage = UIImage(named: "FavoriteSelected")?.withRenderingMode(.alwaysOriginal)
+        let profileSelectedImage = UIImage(named: "ProfileSelected")?.withRenderingMode(.alwaysOriginal)
+        
+        tabBar.items?[0].selectedImage = homeSelectedImage
+        tabBar.items?[1].selectedImage = searchSelectedImage
+        tabBar.items?[2].selectedImage = favoriteSelectedImage
+        tabBar.items?[3].selectedImage = profileSelectedImage
     }
 }
 

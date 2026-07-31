@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  ozinshe demo
+
+  Created by Мади Темешев on 29.03.2026.
+  
+*/
+// MARK: Profile text
+"profile_title" = "Profile";
+"my_profile" = "My Profile";
+"person_info" = "Personal Information";
+"change_password" = "Change password";
+"language" = "Language";
+"view_mode" = "Dark mode";
+
+// MARK: PERSON INFO TEXT
+"your_name" = "Your name";
+"email" = "Email";
+"phone_title" = "Phone";
+"date_of_birth_title" = "Date of birth";
+"kazakh_language_title" = "Қазақша";
+"english_language_title" = "English";
+"russian_language_title" = "Русский";
+"exit_title" = "Exit";
+"exit_subtitle" = "Do you really want to log out of your account?";
+
+// MARK: Change password
+"password_title" = "Password";
+"password_repeat_title" = "Repeat password";
+"password_placeholder" = "Your password";
+
+// MARK: Favorite VC
+"favorite_vc_title" = "List";
+"watch_title" = "Watch";
+
+// MARK: Onboarding vc
+"onboarding_title" = "Welcome to ÖZINŞE!";
+"onboarding_FP_subtitle" = "Movies, TV series, sitcoms, animation projects, TV shows, reality shows, anime and much more";
+"onboarding_SP_subtitle" = "Watch from any device\nWatch your favorite movie on your phone, tablet, or laptop at no extra cost";
+"onboarding_TP_subtitle" = "Registration is easy. Register now and get access to your favorite movies";
+
+// MARK: Authorization VC
+"greeting_title" = "Hello";
+"join_subtitle" = "Log in to your account";
+"your_email_placeholder" = "Your email";
+
+// MARK: Registration VC
+"register_subtitle" = "Fill in the details";
+
+//MARK: Search VC
+"search_title" = "Search";
+"category_title" = "Categories";
+"search_results" = "Search results";
+
+
+// MARK: Buttons
+"save_changes_button" = "Save changes";
+"exit_yes_button" = "Yes, exit";
+"exit_no_button" = "No";
+"skip_button" = "Skip";
+"next_button" = "Next";
+"forgot_password_button" = "Forgot password?";
+"join_button" = "Login";
+"don't_have_acc" = "Don't have an account? ";
+"register_button_title" = "Registration";
+"you_have_acc" = "Do you have an account? ";
+
+
+"continue_watch" = "Continue watching";
+"all_title" = "All";
+"choose_genre" = "Select a genre";
+"for_age" = "By age";
+

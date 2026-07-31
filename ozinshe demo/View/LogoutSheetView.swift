@@ -6,15 +6,16 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class LogoutSheetView: UIView {
     
     var onCancelTapped: (() -> Void)?
     
-    lazy  var titleLabel = UILabel.createLabel(text: "Сіз шынымен аккаунтыныздан", font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
+    lazy  var titleLabel = UILabel.createLabel(text: "exit_subtitle".localized(), font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
     
     lazy var exitButton: MainPurpleButton = {
-        let btn = MainPurpleButton(title: "Иә, шығу")
+        let btn = MainPurpleButton(title: "exit_yes_button".localized())
         btn.addTarget(self, action: #selector (exitTapped), for: .touchUpInside)
         return btn
     }()
@@ -22,7 +23,7 @@ class LogoutSheetView: UIView {
     lazy var cancelButton: UIButton = {
         let btn = UIButton()
         btn.setTitleColor(Colors.Text.purpleText, for: .normal)
-        btn.setTitle("Жоқ", for: .normal)
+        btn.setTitle("exit_no_button".localized(), for: .normal)
         btn.titleLabel?.font = UIFont(name: Fonts.semibold.rawValue, size: 16)!
         btn.addTarget(self, action: #selector (cancelTapped), for: .touchUpInside)
         

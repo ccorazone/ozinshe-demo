@@ -26,7 +26,7 @@ class BottomSheetViewController: UIViewController {
     
    
     
-    init(title: String, mainContent: UIView,padding: CGFloat){
+    init(title: String, mainContent: UIView, padding: CGFloat){
         //self.height = height
         self.mainContent = mainContent
         self.padding = padding

@@ -6,6 +6,7 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class CustomChangePasswordView: UIView {
     
@@ -18,7 +19,7 @@ class CustomChangePasswordView: UIView {
             .font: UIFont(name: Fonts.regular.rawValue, size: 16)!,
             .foregroundColor: Colors.Text.secondary
             ]
-        textField.attributedPlaceholder = NSAttributedString(string: "Сіздің құпия сөзіңіз", attributes: atributes)
+        textField.attributedPlaceholder = NSAttributedString(string: "password_placeholder".localized(), attributes: atributes)
         textField.isSecureTextEntry = true
         textField.backgroundColor = .apptextField
         

@@ -6,10 +6,11 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class OnboardingVC: UIViewController {
     
-    private lazy var titleLabel = UILabel.createLabel(text: "ÖZINŞE-ге қош келдің!" ,font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary, textAlignment: .center)
+    private lazy var titleLabel = UILabel.createLabel(text: "onboarding_title".localized() ,font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary, textAlignment: .center)
     private lazy var subtitleLabel = UILabel.createLabel(font: UIFont(name: Fonts.medium.rawValue, size: 14)!, color: .appOnboardingSubtitle, textAlignment: .center)
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
@@ -19,7 +20,7 @@ class OnboardingVC: UIViewController {
     }()
     private lazy var skipButton: UIButton = {
         var config = UIButton.Configuration.plain()
-        var atributes = AttributedString("Өткізу")
+        var atributes = AttributedString("skip_button".localized())
         atributes.font = UIFont(name: Fonts.medium.rawValue, size: 12)
         atributes.foregroundColor = Colors.Text.defaultBlack
         config.attributedTitle = atributes
@@ -38,7 +39,7 @@ class OnboardingVC: UIViewController {
 
     
     private lazy var nextButton: UIButton = {
-        let btn = MainPurpleButton(title: "Әрі қарай")
+        let btn = MainPurpleButton(title: "next_button".localized())
         let action = UIAction { [weak self] _ in
             let vc = AuthorizationViewController()
             self?.navigationController?.show(vc, sender: self)
@@ -68,7 +69,7 @@ class OnboardingVC: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.right.equalToSuperview().inset(16)
             make.height.equalTo(24)
-            make.width.equalTo(70)
+            //make.width.equalTo(70)
         }
         nextButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(24)

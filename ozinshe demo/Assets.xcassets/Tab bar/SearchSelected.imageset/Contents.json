@@ -3,6 +3,16 @@
     {
       "filename" : "SearchSelected.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Search- Filled.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

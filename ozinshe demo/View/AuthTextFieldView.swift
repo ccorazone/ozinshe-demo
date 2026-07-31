@@ -6,6 +6,7 @@
 //
 import UIKit
 import SnapKit
+import Localize_Swift
 
 class AuthTextFieldView: UIView {
     private let titleLabel = UILabel.createLabel(font: UIFont(name: Fonts.bold.rawValue, size: 14)!, color: Colors.Text.primary)
@@ -17,7 +18,7 @@ class AuthTextFieldView: UIView {
             .font: UIFont(name: Fonts.regular.rawValue, size: 16)!,
             .foregroundColor: Colors.Text.secondary
         ]
-        textField.attributedPlaceholder = NSAttributedString(string: "Сіздің email", attributes: atributs)
+        textField.attributedPlaceholder = NSAttributedString(string: "your_email_placeholder".localized(), attributes: atributs)
         textField.font = UIFont(name: Fonts.semibold.rawValue, size: 16)
         textField.textColor = Colors.Text.primary
         textField.backgroundColor = .apptextField

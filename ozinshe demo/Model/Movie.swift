@@ -19,9 +19,9 @@ struct Movie: Codable{
     let video: Video?
     let watchCount, seasonCount, seriesCount: Int?
     let createdDate, lastModifiedDate: String?
-    let screenshots: [Poster]
-    let categoryAges, genres, categories: [Category]
-    let favorite: Bool
+    let screenshots: [Poster]?
+    let categoryAges, genres, categories: [Category]?
+    let favorite: Bool?
 }
 
 struct Category: Codable{
@@ -29,7 +29,7 @@ struct Category: Codable{
     let name: String
     let fileId: Int?
     let link: String?
-    let movieConut: Int?
+    let movieCount: Int?
     
 }
 struct Poster: Codable{
@@ -45,5 +45,28 @@ struct Video: Codable{
     let seasonId: Int?
     let number: Int?
     
+}
+
+struct MovieResponse: Codable {
+    let content: [Movie]
+    let totalPages: Int?
+    let totalElements: Int?
+    let size: Int?
+    let number: Int?
+}
+
+struct AllMoviesByCategory: Codable{
+    let categoryId: Int
+    let categoryName: String
+    let movies: [Movie]
+    
+}
+
+struct BannerMovie: Codable{
+    let id: Int
+    let link: String
+    let fileId: Int
+    let movie: Movie
+    let sortOrder: Int
 }
 

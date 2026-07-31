@@ -6,19 +6,19 @@
 //
 import UIKit
 import SnapKit
-
+import Localize_Swift
 class RegisterViewController: UIViewController {
     private let viewModel = AuthViewModel()
     
-    private let titleLabel = UILabel.createLabel(text: "Тіркелу", font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary)
-    private let subTitleLabel = UILabel.createLabel(text: "Деректерді толтырыңыз", font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
+    private let titleLabel = UILabel.createLabel(text: "register_button_title".localized(), font: UIFont(name: Fonts.bold.rawValue, size: 24)!, color: Colors.Text.primary)
+    private let subTitleLabel = UILabel.createLabel(text: "register_subtitle".localized(), font: UIFont(name: Fonts.regular.rawValue, size: 16)!, color: Colors.Text.secondary)
     
-    private let loginTextField = AuthTextFieldView(title: "Email")
-    private let passwordTextField = CustomChangePasswordView(title: "Құпия сөз")
-    private let confirmPasswordTextField = CustomChangePasswordView(title: "Құпия сөзді қайталаңыз")
+    private let loginTextField = AuthTextFieldView(title: "email".localized())
+    private let passwordTextField = CustomChangePasswordView(title: "password_title".localized())
+    private let confirmPasswordTextField = CustomChangePasswordView(title: "password_repeat_title".localized())
     
     private lazy var registerButton: UIButton = {
-        let btn = MainPurpleButton(title: "Тіркелу")
+        let btn = MainPurpleButton(title: "register_button_title".localized())
         let action = UIAction { [weak self] _ in
             self?.checkInfo()
             
@@ -32,10 +32,10 @@ class RegisterViewController: UIViewController {
         var container = AttributeContainer()
         container.foregroundColor = Colors.Text.secondary
         container.font = UIFont(name: Fonts.semibold.rawValue, size: 14)
-        var atributedTitle = AttributedString("Сізде аккаунт бар ма? ", attributes: container)
+        var atributedTitle = AttributedString("you_have_acc".localized(), attributes: container)
         var purpleContainer = container
         purpleContainer.foregroundColor = Colors.Text.lightPurpleText
-        var purpleTitle = AttributedString("Тіркелу", attributes: purpleContainer)
+        var purpleTitle = AttributedString("register_button_title".localized(), attributes: purpleContainer)
         atributedTitle.append(purpleTitle)
         config.attributedTitle = atributedTitle
         let btn = UIButton(configuration: config)

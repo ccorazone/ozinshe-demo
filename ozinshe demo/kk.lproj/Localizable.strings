@@ -1,0 +1,71 @@
+/* 
+  Localizable.strings
+  ozinshe demo
+
+  Created by Мади Темешев on 29.03.2026.
+  
+*/
+// MARK: Profile text
+"profile_title" = "Профиль";
+"my_profile" = "Менің профилім";
+"person_info" = "Жеке деректер";
+"change_password" = "Құпия сөзді өзгерту";
+"language" = "Тіл";
+"view_mode" = "Қараңғы режим";
+
+// MARK: PERSON INFO TEXT
+"your_name" = "Сіздің атыңыз";
+"email" = "Email";
+"phone_title" = "Телефон";
+"date_of_birth_title" = "Туылған күні";
+"kazakh_language_title" = "Қазақша";
+"english_language_title" = "English";
+"russian_language_title" = "Русский";
+"exit_title" = "Шығу";
+"exit_subtitle" = "Сіз шынымен аккаунтыныздан шыққыңыз келе ме?";
+
+// MARK: Change password
+"password_title" = "Құпия сөз";
+"password_repeat_title" = "Құпия сөзді қайталаңыз";
+"password_placeholder" = "Сіздің құпия сөзіңіз";
+
+// MARK: Favorite VC
+"favorite_vc_title" = "Тізім";
+"watch_title" = "Қарау";
+
+// MARK: Onboarding vc
+"onboarding_title" = "ÖZINŞE-ге қош келдің!";
+"onboarding_FP_subtitle" = "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары";
+"onboarding_SP_subtitle" = "Кез келген құрылғыдан қара\nСүйікті фильміңді қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара";
+"onboarding_TP_subtitle" = "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз";
+
+// MARK: Authorization VC
+"greeting_title" = "Сәлем";
+"join_subtitle" = "Аккаунтқа кіріңіз";
+"your_email_placeholder" = "Сіздің email";
+
+// MARK: Registration VC
+"register_subtitle" = "Деректерді толтырыңыз";
+
+//MARK: Search VC
+"search_title" = "Іздеу";
+"category_title" = "Санаттар";
+"search_results" = "Іздеу нәтижелері";
+
+// MARK: Buttons
+"save_changes_button" = "Өзгерістерді сақтау";
+"exit_yes_button" = "Иә, шығу";
+"exit_no_button" = "Жоқ";
+"skip_button" = "Өткізу";
+"next_button" = "Әрі қарай";
+"forgot_password_button" = "Құпия сөзді ұмыттыңыз ба?";
+"join_button" = "Кіру";
+"don't_have_acc" = "Аккаунтыныз жоқ па? ";
+"register_button_title" = "Тіркелу";
+"you_have_acc" = "Сізде аккаунт бар ма? ";
+
+
+"continue_watch" = "Қарауды жалғастырыңыз";
+"all_title" = "Барлығы";
+"choose_genre" = "Жанрды таңдаңыз";
+"for_age" = "Жасына сәйкес";
